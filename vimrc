@@ -2,10 +2,12 @@ call plug#begin()
 
 Plug 'vim-scripts/peaksea'
 Plug 'vim-scripts/taglist.vim'
-Plug 'IN3D/vim-raml'
+"Plug 'IN3D/vim-raml'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'sheerun/vim-polyglot'
+Plug 'tfnico/vim-gradle'
 
 call plug#end()
 
