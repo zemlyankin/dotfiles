@@ -1,11 +1,14 @@
 call plug#begin()
 
 Plug 'vim-scripts/peaksea'
+Plug 'drewtempelmeyer/palenight.vim'
+
 Plug 'vim-scripts/taglist.vim'
-"Plug 'IN3D/vim-raml'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'itchyny/lightline.vim'
+
 Plug 'sheerun/vim-polyglot'
 Plug 'tfnico/vim-gradle'
 
@@ -146,14 +149,12 @@ set completeopt=menuone,menu,longest,preview
 if ! has("gui_running") 
     set t_Co=256 
 endif 
-" feel free to choose :set background=light for a different style 
 set background=dark 
-colors peaksea
-"colors sorcerer
+"colors peaksea 
+colorscheme palenight
 
 "NERDtree plugin
 map <C-N> :NERDTreeToggle<CR>
-
 
 " --------------------
 " TagList plugin
