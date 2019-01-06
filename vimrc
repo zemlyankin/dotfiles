@@ -5,7 +5,10 @@ Plug 'vim-scripts/peaksea'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'altercation/vim-colors-solarized'
 
+" shows directory tree
 Plug 'scrooloose/nerdtree'
+
+" good switching between tmux and vim windows
 Plug 'christoomey/vim-tmux-navigator'
 
 " configurable status line
@@ -15,9 +18,16 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" easy commenting with gc{motion}
 Plug 'tpope/vim-commentary'
+
+" allows to change/delete/insert surroundings
 Plug 'tpope/vim-surround'
+
+" multiple combinations like prev/next
 Plug 'tpope/vim-unimpaired'
+
+" provides repeating with "." for several plugins
 Plug 'tpope/vim-repeat'
 
 " shows git modifications in gutter
@@ -30,14 +40,23 @@ Plug 'tpope/vim-rhubarb'
 " shows whitespaces at the end of line
 Plug 'ntpeters/vim-better-whitespace'
 
-" allows to run ack-grep and ag
+" allows to run ack-grep and ag and show results in quickfix
 Plug 'mileszs/ack.vim'
+
 " plugs in multiple syntax highlighting schemes
 Plug 'sheerun/vim-polyglot'
+
 " syntax highlighting for Gradle build files
 Plug 'tfnico/vim-gradle'
-" runs static ananlysis for numerous file types
-Plug 'scrooloose/syntastic'
+
+" runs async static ananlysis
+Plug 'w0rp/ale'
+
+" automatically inserts closing tag
+Plug 'alvan/vim-closetag'
+
+" improves finding of matching objects with %
+Plug 'andymass/vim-matchup'
 
 call plug#end()
 
@@ -48,20 +67,23 @@ map <Space> <leader>
 " leader mappings
 nnoremap <leader>a :Ack!<Space>
 
-" use regular regex
-nnoremap / /\v
-vnoremap / /\v
-
 " opens fzf buffers
 nmap ; :Buffers<CR>
-nmap <Leader>o :Files<CR>
-nmap <Leader>t :Tags<CR>
+nmap <leader>o :Files<CR>
+nmap <leader>t :Tags<CR>
+
+"NERDtree plugin
+map <C-N> :NERDTreeToggle<CR>
+
+" color scheme settings
+if ! has("gui_running")
+    set t_Co=256
+endif
+set background=dark
+colorscheme palenight
 
 " turn off Vi-compatible mode
 set nocompatible
-
-" turn on syntax highlighting
-syntax on
 
 " show all commands in status
 set showcmd
@@ -117,32 +139,8 @@ set title                " change the terminal's title
 "set visualbell           " don't beep
 set noerrorbells         " don't beep
 
-if has("autocmd")
-    " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
-    " 'cindent' is on in C files, etc.
-    " Also load indent files, to automatically do language-dependent indenting.
-    filetype plugin indent on
-    " ...
-endif
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
-
-au BufNewFile,BufRead *.gradle setf groovy
-
-" color scheme settings
-if ! has("gui_running")
-    set t_Co=256
-endif
-set background=dark
-colorscheme palenight
-
-"NERDtree plugin
-map <C-N> :NERDTreeToggle<CR>
 
 set wildmenu
 set wildmode=list:longest,full
@@ -150,5 +148,20 @@ set wildmode=list:longest,full
 set splitbelow
 set splitright
 
+" turn on syntax highlighting
+syntax on
+
+" Enable file type detection.
+filetype plugin indent on
+
+autocmd BufNewFile,BufRead *.gradle setfiletype groovy
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+
 " Plugin vim-better-whitespace
 let g:show_spaces_that_precede_tabs=1
+
+" Plugin closetag
+let g:closetag_filetypes = 'html,xhtml,phtml,xml'
+
+" Plugin NERDTree
+let g:NERDTreeNodeDelimiter = "\u00a0"
