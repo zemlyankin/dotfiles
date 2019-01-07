@@ -46,6 +46,12 @@ Plug 'mileszs/ack.vim'
 " plugs in multiple syntax highlighting schemes
 Plug 'sheerun/vim-polyglot'
 
+" indentation for groovy
+Plug 'vim-scripts/groovyindent-unix'
+
+" syntax/indent for jenkinsfile
+Plug 'martinda/jenkinsfile-vim-syntax'
+
 " syntax highlighting for Gradle build files
 Plug 'tfnico/vim-gradle'
 
