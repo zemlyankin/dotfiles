@@ -134,7 +134,7 @@ set gdefault
 
 " wrap settings
 set wrap
-set textwidth=79
+set textwidth=80
 set formatoptions=qrn1
 
 set number  " always show line numbers
@@ -142,8 +142,11 @@ set relativenumber  " show relative numbers
 "set showmatch     " set show matching parenthesis
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
-"set visualbell           " don't beep
-set noerrorbells         " don't beep
+
+"never beep
+set visualbell
+set noerrorbells
+set t_vb=
 
 " Always show the status line
 set laststatus=2
@@ -171,3 +174,4 @@ let g:closetag_filetypes = 'html,xhtml,phtml,xml'
 
 " Plugin NERDTree
 let g:NERDTreeNodeDelimiter = "\u00a0"
+
