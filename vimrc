@@ -166,6 +166,9 @@ filetype plugin indent on
 autocmd BufNewFile,BufRead *.gradle setfiletype groovy
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
 
+" Search for tags recursively up to root project dir
+set tags=tags;/
+
 " Plugin vim-better-whitespace
 let g:show_spaces_that_precede_tabs=1
 
